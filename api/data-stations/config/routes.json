@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/data-stations-list",
+      "handler": "data-stations.list",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

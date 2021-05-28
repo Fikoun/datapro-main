@@ -5,4 +5,9 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    list: async (ctx) => {
+        //strapi.io;
+        return strapi.io;
+    }
+};
