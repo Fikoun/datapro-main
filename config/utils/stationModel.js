@@ -18,12 +18,12 @@ async function setState(name, state="unknown") {
     return false;
 }
 
-async function pingStation(name, socket) {
+async function pingStation(name, socketId) {
     const DataStations = strapi.services['data-stations'];
     try {
         if ((await DataStations.find({ name })).length) {
             console.log(`Already exists.. putting online [${name}]`);
-            DataStations.update({ name }, { state: "online", socket});
+            DataStations.update({ name }, { state: "online", socketId});
         } else {
             const station = await DataStations.create({
                 name,
