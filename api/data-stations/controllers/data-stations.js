@@ -6,8 +6,23 @@
  */
 
 module.exports = {
-    list: async (ctx) => {
+    list: (ctx) => new Promise( (resolve, reject) => {
         //strapi.io;
-        return strapi.io;
-    }
+        const { socketId } = ctx.params
+        const socket = strapi.io.sockets.sockets.get(socketId)
+        if (!socket)
+            return new Error("Unknown or disconnected socket!");
+
+        //console.log({ socket });
+
+        socket.on('list-ports', (res, callback) => {
+            console.log(res)
+            callback({
+                status: "ok"
+            });
+            resolve(res)
+        });
+
+        socket.emit('list-ports', {});
+    })
 };

@@ -50,7 +50,7 @@
     },
     {
       "method": "GET",
-      "path": "/data-stations-list",
+      "path": "/data-stations-list/:socketId",
       "handler": "data-stations.list",
       "config": {
         "policies": []
