@@ -23,7 +23,7 @@ async function pingStation(name, socket) {
     try {
         if ((await DataStations.find({ name })).length) {
             console.log(`Already exists.. putting online [${name}]`);
-            DataStations.update({ name }, { state: "online"});
+            DataStations.update({ name }, { state: "online", socket});
         } else {
             const station = await DataStations.create({
                 name,
