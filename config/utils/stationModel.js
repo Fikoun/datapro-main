@@ -27,12 +27,13 @@ async function pingStation(name, socketId) {
         } else {
             const station = await DataStations.create({
                 name,
-                socketId: socket
+                socketId
             });
             console.log(`Creating new station  [${name}]`);
             return station;
         }
     } catch (err) {
+        console.log({err});
         console.log("Station couldn't be created. Try again!")
     }
     return false;

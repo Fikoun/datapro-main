@@ -18,7 +18,11 @@ module.exports = () => {
     });
 
     io.on('connection', function (socket) {
-        pingStation("Test_station", socket.id);
+        
+        socket.on('authorize', function(data) {
+            console.log({data});
+            pingStation(data.name, socket.id);
+        })
         socket.on('disconnect', function() {
             setState("Test_station", "offline")
         })
